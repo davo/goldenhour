@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import Mapbox
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, MGLMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let mapView = MGLMapView(frame: view.bounds)
+        mapView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        
+        // set the map's center coordinate
+        mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: 40.7326808,
+            longitude: -73.9843407),
+            zoomLevel: 12, animated: false)
+        
+        view.addSubview(mapView)
     }
 
     override func didReceiveMemoryWarning() {
